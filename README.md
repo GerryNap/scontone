@@ -1,4 +1,4 @@
-# 🛒 AmazReview — Blog Hugo per Recensioni Amazon
+# 🛒 ScontOne — Blog Hugo per Recensioni Amazon
 
 Un blog moderno, responsive e dark-themed costruito con Hugo per recensioni e consigli sui prodotti Amazon.
 
@@ -15,7 +15,7 @@ Un blog moderno, responsive e dark-themed costruito con Hugo per recensioni e co
 ### Avvio del server di sviluppo
 
 ```bash
-cd amazblog
+cd scontone
 hugo server -D
 ```
 
