@@ -1,6 +1,6 @@
-baseURL = "https://amazblog.it/"
+baseURL = "https://scont.one/"
 languageCode = "it-IT"
-title = "AmazReview — I Migliori Prodotti Amazon"
+title = "ScontOne — I Migliori Prodotti Amazon"
 [pagination]
   pagerSize = 12
 enableRobotsTXT = true
