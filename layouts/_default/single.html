@@ -1,0 +1,163 @@
+{{ define "main" }}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      {{ range .Ancestors.Reverse }}
+        {{ if not .IsHome }}
+        <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        <span>/</span>
+        {{ end }}
+      {{ end }}
+      <span>{{ .Title | truncate 40 }}</span>
+    </nav>
+  </div>
+</div>
+
+<!-- SINGLE POST CONTENT -->
+<article class="single-post">
+  <header class="post-header">
+    
+    <!-- Tags -->
+    <div class="post-tags">
+      {{ with .Params.category }}<span class="post-tag featured">{{ . }}</span>{{ end }}
+      {{ if .Params.best_buy }}<span class="post-tag featured">🏆 Best Buy</span>{{ end }}
+      {{ if .Params.top_pick }}<span class="post-tag featured">⭐ Top Pick</span>{{ end }}
+      {{ range .Params.tags }}<span class="post-tag">{{ . }}</span>{{ end }}
+    </div>
+
+    <h1 class="post-title">{{ .Title }}</h1>
+
+    <!-- Meta bar -->
+    <div class="post-meta-bar">
+      <div class="post-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        {{ .Date.Format "2 January 2006" }}
+      </div>
+      {{ with .Params.author }}
+      <div class="post-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        {{ . }}
+      </div>
+      {{ end }}
+      {{ with .Params.read_time }}
+      <div class="post-meta-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        {{ . }} min di lettura
+      </div>
+      {{ end }}
+      {{ if .Params.rating }}
+      <div class="post-meta-item" style="margin-left:auto;color:var(--gold)">
+        ⭐ {{ .Params.rating }}/5
+      </div>
+      {{ end }}
+    </div>
+  </header>
+
+  <!-- PRODUCT BOX -->
+  {{ if .Params.product_name }}
+  <div class="product-box">
+    <div class="product-box-header">
+      <div class="product-box-image">
+        {{ if .Params.image }}
+          <img src="{{ .Params.image }}" alt="{{ .Params.product_name }}" />
+        {{ else }}
+          {{ default "📦" .Params.icon }}
+        {{ end }}
+      </div>
+      <div class="product-box-info">
+        <div class="brand">{{ .Params.brand }}</div>
+        <h3>{{ .Params.product_name }}</h3>
+        
+        {{ if .Params.rating }}
+        <div class="product-score">
+          <span class="big-score">{{ .Params.rating }}</span>
+          <div class="score-bar-wrap">
+            {{ if .Params.scores }}
+              {{ range $key, $val := .Params.scores }}
+              <div class="score-bar-row">
+                <span>{{ $key }}</span>
+                <div class="score-bar">
+                  <div class="score-bar-fill" style="width:{{ mul $val 20 }}%"></div>
+                </div>
+                <span>{{ $val }}</span>
+              </div>
+              {{ end }}
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+      </div>
+    </div>
+
+    <div class="product-box-price">
+      <div>
+        <span class="price-tag">{{ .Params.price }}</span>
+        {{ with .Params.price_old }}<span class="price-old">{{ . }}</span>{{ end }}
+        {{ with .Params.discount }}<span class="price-discount">-{{ . }}%</span>{{ end }}
+      </div>
+      {{ with .Params.amazon_url }}
+      <a href="{{ . }}" class="amazon-btn" target="_blank" rel="noopener sponsored">
+        🛒 Vedi su Amazon
+      </a>
+      {{ end }}
+    </div>
+  </div>
+  {{ end }}
+
+  <!-- PROS/CONS -->
+  {{ if or .Params.pros .Params.cons }}
+  <div class="pros-cons">
+    {{ if .Params.pros }}
+    <div class="pros">
+      <h4>✅ Pro</h4>
+      <ul>
+        {{ range .Params.pros }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+    {{ if .Params.cons }}
+    <div class="cons">
+      <h4>❌ Contro</h4>
+      <ul>
+        {{ range .Params.cons }}
+        <li>{{ . }}</li>
+        {{ end }}
+      </ul>
+    </div>
+    {{ end }}
+  </div>
+  {{ end }}
+
+  <!-- POST CONTENT -->
+  <div class="post-content">
+    {{ .Content }}
+  </div>
+
+  <!-- AFFILIATE DISCLAIMER -->
+  <div class="disclaimer" style="margin-top:3rem">
+    📎 <strong>Disclaimer:</strong> {{ .Site.Params.affiliateDisclaimer }}
+  </div>
+
+  <!-- NAVIGATION -->
+  <nav style="display:flex;justify-content:space-between;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);gap:1rem">
+    {{ with .PrevInSection }}
+    <a href="{{ .RelPermalink }}" class="btn-secondary" style="flex:1;justify-content:flex-start">
+      ← {{ .Title | truncate 40 }}
+    </a>
+    {{ end }}
+    {{ with .NextInSection }}
+    <a href="{{ .RelPermalink }}" class="btn-secondary" style="flex:1;justify-content:flex-end">
+      {{ .Title | truncate 40 }} →
+    </a>
+    {{ end }}
+  </nav>
+
+</article>
+
+{{ end }}

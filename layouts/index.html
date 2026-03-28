@@ -1,0 +1,137 @@
+{{ define "main" }}
+
+<!-- HERO -->
+<section class="hero container">
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Trova il prodotto<br><em>giusto per te</em>
+    </h1>
+    <p class="hero-desc">
+      Guide all'acquisto per aiutarti a scegliere i migliori prodotti su Amazon.
+    </p>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <a href="https://amzn.to/481HbFr" class="hero-card" target="_blank" rel="noopener sponsored">
+  <div class="hero-card-icon" style="background: linear-gradient(135deg,#2563eb22,#2563eb44)">📱</div>
+  <div class="hero-card-info">
+    <h4>Apple | iPhone 17 256Gb</h4>
+    <p>Tecnologia</p>
+  </div>
+  <span class="hero-card-badge">TOP</span>
+</a>
+
+<a href="https://amzn.to/47OlKb5" class="hero-card" target="_blank" rel="noopener sponsored">
+  <div class="hero-card-icon" style="background: linear-gradient(135deg,#dc262622,#dc262644)">🍳</div>
+  <div class="hero-card-info">
+    <h4>Russell Hobbs | Friggitrice ad Aria 9L</h4>
+    <p>Cucina</p>
+  </div>
+  <span class="hero-card-badge">BEST BUY</span>
+</a>
+
+<a href="https://amzn.to/4uVNqEv" class="hero-card" target="_blank" rel="noopener sponsored">
+  <div class="hero-card-icon" style="background: linear-gradient(135deg,#16a34a22,#16a34a44)">💻</div>
+  <div class="hero-card-info">
+    <h4>Apple | MacBook Neo 256Gb</h4>
+    <p>Tecnologia</p>
+  </div>
+  <span class="hero-card-badge">NUOVO</span>
+</a>
+</section>
+
+<hr class="divider" />
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="section-header">
+    <h2 class="section-title">Esplora le <span>Categorie</span></h2>
+  </div>
+
+  <div class="categories-grid">
+
+    <!-- TECNOLOGIA -->
+    <a href="/tecnologia/" class="category-card" style="--cat-color: #3b82f6">
+      <span class="category-icon">📱</span>
+      <div class="category-name">Tecnologia</div>
+      <div class="category-count">Smartphone · Tablet · Laptop</div>
+      <div class="subcategories">
+        <span class="subcategory-tag">Smartphone</span>
+        <span class="subcategory-tag">Tablet</span>
+        <span class="subcategory-tag">Laptop</span>
+        <span class="subcategory-tag">Gaming</span>
+      </div>
+      <span class="category-arrow">↗</span>
+    </a>
+
+    <!-- CUCINA -->
+    <a href="/cucina/" class="category-card" style="--cat-color: #ef4444">
+      <span class="category-icon">🍳</span>
+      <div class="category-name">Cucina</div>
+      <div class="category-count">Friggitrici · Caffè · Robot</div>
+      <div class="subcategories">
+        <span class="subcategory-tag">Friggitrici</span>
+        <span class="subcategory-tag">Caffè</span>
+        <span class="subcategory-tag">Tostapane</span>
+        <span class="subcategory-tag">Robot</span>
+      </div>
+      <span class="category-arrow">↗</span>
+    </a>
+
+    <!-- CASA -->
+    <a href="/casa/" class="category-card" style="--cat-color: #f59e0b">
+      <span class="category-icon">🏠</span>
+      <div class="category-name">Casa</div>
+      <div class="category-count">Aspirapolvere · Domotica</div>
+      <div class="subcategories">
+        <span class="subcategory-tag">Aspirapolvere</span>
+        <span class="subcategory-tag">Domotica</span>
+        <span class="subcategory-tag">Illuminazione</span>
+      </div>
+      <span class="category-arrow">↗</span>
+    </a>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- FEATURED POST -->
+{{ $featured := where .Site.RegularPages "Params.featured" true }}
+{{ if $featured }}
+  {{ $post := index $featured 0 }}
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">In <span>Evidenza</span></h2>
+    </div>
+    <a href="{{ $post.RelPermalink }}" class="featured-post" style="color:inherit">
+      <div class="featured-post-image">
+        {{ if $post.Params.image }}
+          <img src="{{ $post.Params.image }}" alt="{{ $post.Title }}" loading="lazy" />
+        {{ else }}
+          <div class="featured-post-image-placeholder">
+            <span class="big-icon">{{ default "📦" $post.Params.icon }}</span>
+          </div>
+        {{ end }}
+      </div>
+      <div class="featured-post-body">
+        <div class="featured-label">⭐ Recensione in evidenza</div>
+        <h3 class="featured-post-title">{{ $post.Title }}</h3>
+        <p class="featured-post-desc">{{ $post.Summary }}</p>
+        <div class="btn-primary" style="width:fit-content">
+          Leggi la recensione →
+        </div>
+      </div>
+    </a>
+  </section>
+  <hr class="divider" />
+{{ end }}
+
+<!-- AFFILIATE DISCLAIMER -->
+<div class="container" style="padding-bottom:2rem">
+  <div class="disclaimer">
+    📎 <strong>Nota:</strong> {{ .Site.Params.affiliateDisclaimer }}
+  </div>
+</div>
+
+{{ end }}

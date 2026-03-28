@@ -1,0 +1,43 @@
+baseURL = "https://amazblog.it/"
+languageCode = "it-IT"
+title = "AmazReview — I Migliori Prodotti Amazon"
+[pagination]
+  pagerSize = 12
+enableRobotsTXT = true
+summaryLength = 40
+
+[params]
+  description = "Recensioni oneste e consigli sui migliori prodotti Amazon. Risparmia tempo e trova il prodotto perfetto."
+  author = "Team AmazReview"
+  logo = "🛒"
+  affiliateDisclaimer = "Questo sito partecipa al Programma di affiliazione Amazon EU. Acquistando tramite i nostri link riceviamo una commissione senza costi aggiuntivi per te."
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  rating = "ratings"
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Tecnologia"
+    url = "/tecnologia/"
+    weight = 2
+  [[menu.main]]
+    name = "Cucina"
+    url = "/cucina/"
+    weight = 3
+  [[menu.main]]
+    name = "Casa"
+    url = "/casa/"
+    weight = 4
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "monokai"

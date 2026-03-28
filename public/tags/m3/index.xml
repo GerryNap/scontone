@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>M3 on AmazReview — I Migliori Prodotti Amazon</title>
+    <link>http://localhost:1313/tags/m3/</link>
+    <description>Recent content in M3 on AmazReview — I Migliori Prodotti Amazon</description>
+    <generator>Hugo</generator>
+    <language>it-IT</language>
+    <lastBuildDate>Mon, 20 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/m3/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MacBook Air M3: Il Laptop Perfetto per il 2024?</title>
+      <link>http://localhost:1313/tecnologia/laptop/macbook-air-m3-recensione/</link>
+      <pubDate>Mon, 20 Jan 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tecnologia/laptop/macbook-air-m3-recensione/</guid>
+      <description>&lt;h2 id=&#34;il-laptop-che-non-scalda-mai&#34;&gt;Il laptop che non scalda mai&lt;/h2&gt;&#xA;&lt;p&gt;Il &lt;strong&gt;MacBook Air con chip M3&lt;/strong&gt; risolve definitivamente il problema che affliggeva i vecchi Mac basati su Intel: il surriscaldamento. Grazie all&amp;rsquo;architettura ARM e all&amp;rsquo;assenza di ventole di raffreddamento, questo computer rimane freddo anche durante sessioni di lavoro intensive.&lt;/p&gt;&#xA;&lt;h2 id=&#34;performance-un-salto-generazionale&#34;&gt;Performance: un salto generazionale&lt;/h2&gt;&#xA;&lt;p&gt;Rispetto al precedente M2, il chip &lt;strong&gt;M3 porta un miglioramento del 20-30%&lt;/strong&gt; nelle attività quotidiane. L&amp;rsquo;editing video in 4K in Final Cut Pro è fluido, Photoshop risponde istantaneamente, e anche con decine di tab aperte in Safari la memoria gestita da macOS rimane efficiente.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

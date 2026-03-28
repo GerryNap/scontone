@@ -1,0 +1,44 @@
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="{{ .Site.BaseURL }}" class="site-logo">
+        <div class="logo-icon">🛒</div>
+        <div class="logo-text">Scont<span>One</span></div>
+      </a>
+      <p>Guide all'acquisto per aiutarti a scegliere i migliori prodotti su Amazon.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Categorie</h4>
+      <ul>
+        <li><a href="/tecnologia/">📱 Tecnologia</a></li>
+        <li><a href="/cucina/">🍳 Cucina</a></li>
+        <li><a href="/casa/">🏠 Casa</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Popolari</h4>
+      <ul>
+        <li><a href="/tecnologia/smartphone/">Smartphone</a></li>
+        <li><a href="/cucina/friggitrici-ad-aria/">Friggitrici ad aria</a></li>
+        <li><a href="/tecnologia/laptop/">Laptop</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="/privacy/">Privacy Policy</a></li>
+        <li><a href="/cookie/">Cookie Policy</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <hr class="divider" />
+
+  <div class="footer-bottom">
+    <p>© {{ now.Year }} Scont.One. Tutti i diritti riservati.</p>
+    <p class="affiliate-note">{{ .Site.Params.affiliateDisclaimer }}</p>
+  </div>
+</footer>

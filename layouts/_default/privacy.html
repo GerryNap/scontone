@@ -1,0 +1,20 @@
+{{ define "main" }}
+<div class="page-header">
+  <div class="page-header-inner">
+    <nav class="page-breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>{{ .Title }}</span>
+    </nav>
+    <div class="page-header-icon">🔒</div>
+    <h1>{{ .Title }}</h1>
+    {{ with .Params.subtitle }}<p>{{ . }}</p>{{ end }}
+  </div>
+</div>
+
+<div class="legal-page">
+  <div class="legal-body">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}

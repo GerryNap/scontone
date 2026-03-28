@@ -1,0 +1,90 @@
+{{ define "main" }}
+
+{{ $section := .CurrentSection }}
+{{ $isCategory := eq .Kind "section" }}
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="page-header-inner">
+    
+    <!-- Breadcrumb -->
+    <nav class="page-breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      {{ if .Parent }}{{ if not .Parent.IsHome }}
+        <a href="{{ .Parent.RelPermalink }}">{{ .Parent.Title }}</a>
+        <span>/</span>
+      {{ end }}{{ end }}
+      <span>{{ .Title }}</span>
+    </nav>
+
+    <div class="page-header-icon">{{ default "📦" .Params.icon }}</div>
+    <h1>{{ .Title | markdownify }}</h1>
+    {{ with .Params.description }}
+      <p>{{ . }}</p>
+    {{ else }}
+      <p>{{ .Content | plainify | truncate 120 }}</p>
+    {{ end }}
+
+    <!-- Subcategories navigation -->
+    {{ if .Sections }}
+    <nav class="subcategories-nav" aria-label="Sottocategorie">
+      <a href="{{ .RelPermalink }}" class="subcategory-btn active">
+        <span class="sub-icon">🔹</span> Tutti
+      </a>
+      {{ range .Sections }}
+      <a href="{{ .RelPermalink }}" class="subcategory-btn">
+        <span class="sub-icon">{{ default "▸" .Params.icon }}</span> {{ .Title }}
+      </a>
+      {{ end }}
+    </nav>
+    {{ end }}
+
+  </div>
+</div>
+
+<!-- POSTS -->
+<section class="section">
+
+  {{ $pages := .Pages }}
+  {{ if .Sections }}
+    {{ $pages = .RegularPages }}
+  {{ end }}
+
+  {{ if $pages }}
+    <div class="posts-grid">
+      {{ range $pages }}
+        {{ partial "post-card.html" . }}
+      {{ end }}
+    </div>
+    
+    <!-- Pagination -->
+    {{ template "_internal/pagination.html" . }}
+
+  {{ else if .Sections }}
+    <!-- Show sub-sections as cards if no direct posts -->
+    <div class="categories-grid">
+      {{ range .Sections }}
+        <a href="{{ .RelPermalink }}" class="category-card" style="--cat-color: {{ default "#ff6b35" .Params.color }}">
+          <span class="category-icon">{{ default "📂" .Params.icon }}</span>
+          <div class="category-name">{{ .Title }}</div>
+          <div class="category-count">{{ len .Pages }} articoli</div>
+          {{ with .Params.description }}
+            <div class="category-count" style="margin-top:0.25rem">{{ . | truncate 50 }}</div>
+          {{ end }}
+          <span class="category-arrow">↗</span>
+        </a>
+      {{ end }}
+    </div>
+
+  {{ else }}
+    <div class="empty-state">
+      <div class="empty-icon">📝</div>
+      <h3>Nessun contenuto ancora</h3>
+      <p>Stiamo lavorando a nuove recensioni per questa categoria. Torna presto!</p>
+    </div>
+  {{ end }}
+
+</section>
+
+{{ end }}
